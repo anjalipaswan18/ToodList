@@ -9,27 +9,41 @@ const TodoList = () => {
   const [popup, setPopup] = useState("hide");
   const [inputValue, setInputValue] = useState("");
   const [task, setTask] = useState(TodoItems);
+  const [editMode, setEditMode] = useState(false);
+  const [taskId, setTaskId] = useState(null);
   const submit = (e) => {
     e.preventDefault();
     setPopup("hide");
-    const newTask = {
-      id: TodoItems[TodoItems.length - 1].id + 1,
-      task: inputValue,
-    };
-    setTask([...task, newTask]);
+    if (editMode) {
+      const taskToEdit = task.find((task) => task.id === taskId);
+      taskToEdit.task = inputValue;
+      setTask([...task]);
+      setEditMode(false);
+      setTaskId(null);
+    } else {
+      const newTask = {
+        id: TodoItems[TodoItems.length - 1].id + 1,
+        task: inputValue,
+      };
+      setTask([...task, newTask]);
+    }
     setInputValue("");
   };
-  // const editTask = (e) => {
-  //   setTask(e.target.value);
-  // };
+  const editTask = (taskId) => {
+    const taskToEdit = task.find((task) => task.id === taskId);
+
+    setInputValue(taskToEdit.task);
+    setPopup("show");
+
+    setEditMode(true);
+
+    setTaskId(taskId);
+  };
   const deleteTask = (taskId) => {
     const updatedTasks = task.filter((task) => task.id !== taskId);
     setTask(updatedTasks);
   };
 
-  // const deleteTask = () => {
-  //  setTask("");
-  // };
   // const AddedTask=()=>{
   //     setTask([...Items]+addedtask)
   // }
@@ -52,10 +66,11 @@ const TodoList = () => {
             <div className="todolist_btns">
               <div
                 className="todolist-edit-button"
-                // onClick={(e) => editTask(e)}
+                onClick={() => editTask(item.id)}
               >
                 <MdModeEdit />
               </div>
+
               <div
                 className="todolist-delete-button"
                 onClick={() => deleteTask(item.id)}
