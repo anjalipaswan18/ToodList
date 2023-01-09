@@ -4,10 +4,15 @@ import { MdModeEdit } from "react-icons/md";
 import { AiFillDelete } from "react-icons/ai";
 import { AiOutlinePlusCircle } from "react-icons/ai";
 import TodoItems from "../Data/TodoItems";
+
 console.log(TodoItems);
 const TodoList = () => {
   const [popup, setPopup] = useState("hide");
-  const [inputValue, setInputValue] = useState("");
+  const [inputValue, setInputValue] = useState({
+    time: "",
+    date: "",
+    name: "",
+  });
   const [task, setTask] = useState(TodoItems);
   const [editMode, setEditMode] = useState(false);
   const [taskId, setTaskId] = useState(null);
@@ -43,8 +48,7 @@ const TodoList = () => {
     const updatedTasks = task.filter((task) => task.id !== taskId);
     setTask(updatedTasks);
   };
-
-  // const AddedTask=()=>{
+  //  const AddedTask=()=>{
   //     setTask([...Items]+addedtask)
   // }
   return (
@@ -91,14 +95,30 @@ const TodoList = () => {
                 <input
                   className="todolist-popup_todoInput"
                   type="text"
-                  value={inputValue}
+                  value={inputValue.name}
                   id="addtask"
                   placeholder="Enter your task"
-                  onChange={(e) => setInputValue(e.target.value)}
+                  onChange={(e) =>
+                    setInputValue({ ...inputValue, name: e.target.value })
+                  }
                 />
                 <div className="todolist-popup_inputs_date-time">
-                  <input type="date" id="adddate" />
-                  <input type="time" id="addtime" />
+                  <input
+                    type="date"
+                    id="adddate"
+                    value={inputValue.date}
+                    onChange={(e) =>
+                      setInputValue({ ...inputValue, date: e.target.value })
+                    }
+                  />
+                  <input
+                    type="time"
+                    id="addtime"
+                    value={inputValue.time}
+                    onChange={(e) =>
+                      setInputValue({ ...inputValue, time: e.target.value })
+                    }
+                  />
                 </div>
                 <div className="todolist-cancel-done">
                   <button
@@ -107,6 +127,7 @@ const TodoList = () => {
                   >
                     Cancel
                   </button>
+
                   <button type="submit" className="todolist-popup_btn">
                     Done
                   </button>
