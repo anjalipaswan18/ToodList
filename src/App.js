@@ -1,15 +1,15 @@
 import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Popup from "./component/Popup";
+// import { BrowserRouter, Routes, Route } from "react-router-dom";
+// import Popup from "./component/Popup";
 import TodoList from "./component/TodoList";
 
 const App = () => {
   return (
     <div>
-      <BrowserRouter>
-        <TodoList />
+      <TodoList />
+      {/* <BrowserRouter>
         <Routes></Routes>
-      </BrowserRouter>
+      </BrowserRouter> */}
     </div>
   );
 };
