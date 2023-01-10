@@ -36,13 +36,28 @@
   align-items: center;
   padding: 0.5rem 0.2rem;
 }
-.todolist-circle {
+.todolist-circle-red {
+  color: red;
+  background-color: red;
+  border: 1px solid red;
+  border-radius: 50%;
+  padding: 0.5rem;
+}
+.todolist-circle-yellow {
   color: yellow;
   background-color: yellow;
   border: 1px solid yellow;
   border-radius: 50%;
   padding: 0.5rem;
 }
+.todolist-circle-green {
+  color: green;
+  background-color: green;
+  border: 1px solid yellow;
+  border-radius: 50%;
+  padding: 0.5rem;
+}
+
 .todolist-main {
   position: relative;
 }
