@@ -8,7 +8,6 @@
   color: #006cff;
   font-size: 2rem;
 }
-
 .todolist_todo_container {
   display: flex;
   gap: 0.5rem;
@@ -37,27 +36,20 @@
   padding: 0.5rem 0.2rem;
 }
 .todolist-circle-red {
-  color: red;
-  background-color: red;
-  border: 1px solid red;
+  background-color: rgb(255, 0, 0);
   border-radius: 50%;
-  padding: 0.5rem;
+  padding: 0.6rem;
 }
 .todolist-circle-yellow {
-  color: yellow;
   background-color: yellow;
-  border: 1px solid yellow;
   border-radius: 50%;
-  padding: 0.5rem;
+  padding: 0.6rem;
 }
 .todolist-circle-green {
-  color: green;
-  background-color: green;
-  border: 1px solid yellow;
+  background-color: rgb(0, 130, 2);
   border-radius: 50%;
-  padding: 0.5rem;
+  padding: 0.6rem;
 }
-
 .todolist-main {
   position: relative;
 }
@@ -65,7 +57,6 @@
   display: flex;
   justify-content: space-between;
 }
-
 .todolist-popup {
   background-color: white;
   border: 2px solid rgb(171, 171, 171);
@@ -105,4 +96,19 @@
   border: none;
   color: #006cff;
   padding: 0.5rem 0rem;
+}
+.todolist_date-time {
+  font-size: 0.8rem;
+  display: flex;
+  gap: 0.5rem;
+}
+.todolist_date-time p {
+  padding: 0;
+  margin: 0;
+}
+.todolist-list_no-todo {
+  text-align: center;
+  font-weight: 500;
+  font-size: 1.2rem;
+  padding: 1rem;
 }
